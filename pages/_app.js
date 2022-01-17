@@ -15,6 +15,7 @@ const Header = () => {
   )
 }
 
+
 function MyApp({Component, pageProps}) {
   return (
     <div>
