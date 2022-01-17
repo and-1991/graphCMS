@@ -42,10 +42,10 @@ const Home = (props) => {
   )
 }
 
-export async function getStaticProps(props) {
+export async function getServerSideProps(props) {
   const {locale} = props;
   const {data} = await client.query({
-    query: gql`
+      query: gql`
       query Book {
         books(locales: [${locale}]) {
           name,
@@ -58,7 +58,9 @@ export async function getStaticProps(props) {
         }
       }
     `,
-  });
+      fetchPolicy: 'network-only'
+    },
+  );
 
   return {
     props: {
